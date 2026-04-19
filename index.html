@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Cílios Luxo | Extensões Profissionais</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div id="loader" class="loader-wrapper"><div class="loader"></div></div>
+
+    <header class="glass-nav">
+        <nav class="container">
+            <a href="#" class="logo">NEO CÍLIOS</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="bannersite.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="badge fade-in">Técnica Internacional</span>
+            <h1 class="fade-up">Confiança de Rainha</h1>
+            <p class="fade-up-delay">O olhar mais sofisticado e seguro da cidade.</p>
+            <a href="#servicos" class="btn-main">Agendar Agora</a>
+        </div>
+    </section>
+
+    <section class="services container" id="servicos">
+        <h2 class="section-title">Nossos Serviços</h2>
+        <div class="services-grid" id="services-grid"></div>
+    </section>
+
+    <section class="contact-section" id="contato">
+        <div class="container">
+            <div class="contact-card">
+                <div class="contact-info">
+                    <h2>Agende sua Visita</h2>
+                    <p>Atendimento exclusivo com materiais premium.</p>
+                    <a href="https://wa.me/5541999484843" class="btn-wa">📱 WhatsApp</a>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form id="contact-form">
+                        <div class="input-group">
+                            <label>Seu Nome</label>
+                            <input type="text" id="name" placeholder="Como podemos te chamar?" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Serviço Desejado</label>
+                            <select id="service-select" required></select>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="input-group">
+                                <label>Data</label>
+                                <input type="date" id="date" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Hora</label>
+                                <input type="time" id="time" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-submit">Solicitar Disponibilidade</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/5541999484843" class="floating-wa" target="_blank">💬</a>
+
+    <script src="particles.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
