@@ -1,80 +1,152 @@
+/* NEO CÍLIOS LUXO - VERSÃO FINAL IMPACTANTE */
+
 :root {
     --primary: #ffb6c1;       
+    --gold: #d4af37;          
+    --gold-gradient: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
     --primary-light: #ffe4e1; 
     --primary-dark: #ff8da1;  
     --text: #1d1d1f;
-    --text-light: #86868b;
     --bg: #ffffff;
-    --bg-alt: #fff5f8;       
-    --glass: rgba(255, 255, 255, 0.85);
-    --shadow: 0 20px 40px rgba(255, 182, 193, 0.15);
-    --radius: 24px;
-    --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-heavy: 0 40px 80px rgba(255, 182, 193, 0.4);
+    --transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* Reset e Base */
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-/* Loader */
-.loader-wrapper { position: fixed; inset: 0; background: #fff; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: 0.5s; }
-.loader { width: 40px; height: 40px; border: 3px solid var(--bg-alt); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s infinite linear; }
-@keyframes spin { to { transform: rotate(360deg); } }
+/* Navbar */
+.glass-nav { 
+    position: fixed; top: 0; width: 100%; z-index: 1000; 
+    background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(25px); 
+    border-bottom: 5px solid var(--gold); padding: 15px 0;
+}
+nav { display: flex; justify-content: center; align-items: center; }
+.logo { 
+    font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; 
+    background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
 
-/* Nav */
-.glass-nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--glass); backdrop-filter: blur(20px); padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
-nav { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--primary-dark); text-decoration: none; }
-.nav-links { display: flex; gap: 40px; list-style: none; }
-.nav-links a { text-decoration: none; color: var(--text); font-weight: 600; }
-
-/* Hero */
+/* Hero Section */
 .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; }
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
-.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
-.hero-content { position: relative; z-index: 10; padding: 0 20px; }
-.hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6rem); margin: 20px 0; }
-.badge { background: var(--primary); padding: 8px 20px; border-radius: 100px; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; }
-.btn-main { display: inline-block; background: #fff; color: var(--primary-dark); padding: 20px 50px; border-radius: 100px; text-decoration: none; font-weight: 700; transition: var(--transition); }
-.btn-main:hover { transform: translateY(-5px); background: var(--primary); color: #fff; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7)); }
+.hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 12vw, 8rem); line-height: 0.85; margin-bottom: 30px; text-transform: uppercase; text-shadow: 0 15px 40px rgba(0,0,0,0.5); font-weight: 900; }
 
-/* Services */
-.services { padding: 100px 0; background: var(--bg-alt); }
-.section-title { font-family: 'Playfair Display', serif; font-size: 3rem; text-align: center; margin-bottom: 60px; }
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.service-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); cursor: pointer; }
-.service-card:hover { transform: translateY(-10px); }
-.service-img-wrapper { height: 250px; overflow: hidden; }
-.service-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-.service-body { padding: 25px; }
-.price-tag { font-size: 1.5rem; font-weight: 700; color: var(--primary-dark); }
-
-/* Contact - ROSA CLARO */
-.contact-section { padding: 100px 0; }
-.contact-card { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-.contact-info { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #fff; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
-.contact-info h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 15px; }
-.btn-wa { background: #25d366; color: #fff; text-decoration: none; padding: 15px; border-radius: 10px; text-align: center; font-weight: 700; margin-top: 20px; border: 2px solid #fff; }
-
-.contact-form-wrapper { padding: 50px; background: #fff; }
-.input-group { margin-bottom: 20px; }
-.input-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 5px; color: var(--text-light); }
-.input-group input, .input-group select { width: 100%; padding: 12px; border: 2px solid var(--bg-alt); border-radius: 10px; background: var(--bg-alt); }
-
-/* Botão Pulsando */
-.btn-submit { 
-    width: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-dark)); 
-    color: #fff; border: none; padding: 20px; border-radius: 12px; 
-    font-weight: 900; font-size: 1.1rem; text-transform: uppercase; cursor: pointer;
-    animation: pulse-pink 2s infinite; transition: var(--transition);
-}
-@keyframes pulse-pink {
-    0% { box-shadow: 0 0 0 0 rgba(255, 182, 193, 0.7); }
-    70% { box-shadow: 0 0 0 15px rgba(255, 182, 193, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 182, 193, 0); }
+.btn-main { 
+    display: inline-block; background: var(--gold-gradient); color: #000; padding: 22px 50px; border-radius: 100px; 
+    text-decoration: none; font-weight: 900; font-size: 1.2rem; box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4); text-transform: uppercase; border: none;
 }
 
-.floating-wa { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 25px; text-decoration: none; z-index: 1000; }
+/* Serviços */
+.services { padding: 100px 0; background: #fffafb; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 7vw, 4rem); text-align: center; margin-bottom: 60px; text-transform: uppercase; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; padding: 0 20px; }
+.service-card { background: #fff; border-radius: 40px; overflow: hidden; box-shadow: var(--shadow-heavy); border: 2px solid rgba(212, 175, 55, 0.1); transition: var(--transition); cursor: pointer; }
+.service-card:hover { transform: translateY(-20px); border-color: var(--gold); }
+.service-img-wrapper { height: 400px; overflow: hidden; }
+.service-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 1s; }
+.service-card:hover img { transform: scale(1.1); }
+.service-body { padding: 30px; text-align: center; }
+.service-body h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 10px; }
+.price-tag { display: block; font-size: 2.2rem; font-weight: 900; color: var(--gold); }
 
-@media (max-width: 768px) { .contact-card { grid-template-columns: 1fr; } .nav-links { display: none; } }
+/* Contato */
+.contact-section { padding: 100px 20px; }
+.contact-card { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; border-radius: 50px; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.15); }
+.contact-info { background: #000; color: var(--gold); padding: 60px 30px; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+.contact-info h2 { font-family: 'Playfair Display', serif; font-size: 3rem; line-height: 1; }
+.contact-form-wrapper { padding: 50px 30px; background: #fff; }
+.btn-submit { width: 100%; background: #000; color: var(--gold); padding: 20px; border-radius: 20px; font-size: 1.3rem; font-weight: 900; border: 3px solid var(--gold); text-transform: uppercase; cursor: pointer; }
+
+/* MODAL DE AGENDAMENTO REESTILIZADO */
+.agendamento-modal {
+    position: fixed !important;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(15px);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9999; padding: 20px;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 35px 20px;
+    border-radius: 35px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    border: 1px solid var(--primary-light);
+    animation: modalShow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalShow {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 8px; }
+
+/* Destaque do serviço selecionado */
+.modal-content p {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 15px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+/* Grid de Horários em Quadradinhos Rosa */
+.horarios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.horario-btn {
+    background: #fff;
+    border: 2px solid var(--primary);
+    color: var(--primary-dark);
+    padding: 14px 0;
+    border-radius: 15px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.horario-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Botão Fechar */
+#close-modal {
+    background: #f0f0f2;
+    color: #999;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* Floating WhatsApp */
+.floating-wa { position: fixed; bottom: 25px; right: 25px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: #fff; text-decoration: none; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .contact-card { grid-template-columns: 1fr; }
+    .hero-content h1 { font-size: 4rem; }
+    .horarios { grid-template-columns: repeat(3, 1fr); }
+}
