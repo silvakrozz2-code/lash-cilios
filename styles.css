@@ -50,7 +50,7 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 .service-body { padding: 25px; }
 .price-tag { font-size: 1.5rem; font-weight: 700; color: var(--primary-dark); }
 
-/* Contact - ROSA CLARO */
+/* Contact */
 .contact-section { padding: 100px 0; }
 .contact-card { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
 .contact-info { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #fff; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
@@ -73,6 +73,46 @@ nav { display: flex; justify-content: space-between; align-items: center; }
     0% { box-shadow: 0 0 0 0 rgba(255, 182, 193, 0.7); }
     70% { box-shadow: 0 0 0 15px rgba(255, 182, 193, 0); }
     100% { box-shadow: 0 0 0 0 rgba(255, 182, 193, 0); }
+}
+
+/* --- ESTILO DO AGENDAMENTO (O QUE VOCÊ PEDIU) --- */
+.agendamento-modal {
+    position: fixed !important; inset: 0; background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center;
+    z-index: 2000; padding: 20px;
+}
+
+.modal-content {
+    background: #fff; padding: 35px 25px; border-radius: var(--radius);
+    width: 100%; max-width: 400px; text-align: center;
+    box-shadow: var(--shadow); border: 2px solid var(--primary-light);
+}
+
+/* Nome do Serviço no quadradinho rosa */
+.modal-content p { 
+    background: var(--primary-light); color: var(--primary-dark);
+    display: inline-block; padding: 10px 20px; border-radius: 15px;
+    font-weight: 800; font-size: 1.1rem; margin-bottom: 25px;
+}
+
+/* Horários em quadrados organizados */
+.horarios { 
+    display: grid; grid-template-columns: repeat(3, 1fr); 
+    gap: 12px; margin-bottom: 25px; 
+}
+
+.horario-btn {
+    background: var(--bg-alt); border: 2px solid var(--primary-light);
+    color: var(--primary-dark); padding: 15px 5px; border-radius: 15px;
+    font-weight: 800; cursor: pointer; transition: 0.3s;
+}
+
+.horario-btn:hover { background: var(--primary); color: #fff; }
+
+#close-modal { 
+    background: none; border: none; color: var(--text-light);
+    text-transform: uppercase; font-size: 0.7rem; font-weight: 800;
+    cursor: pointer; letter-spacing: 1px;
 }
 
 .floating-wa { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 25px; text-decoration: none; z-index: 1000; }
