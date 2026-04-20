@@ -6,7 +6,6 @@
     <title>Neo Cílios Luxo | Extensões Profissionais</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <div id="loader" class="loader-wrapper"><div class="loader"></div></div>
@@ -18,7 +17,6 @@
                 <li><a href="#servicos">Serviços</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
-            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
         </nav>
     </header>
 
@@ -37,8 +35,45 @@
 
     <section class="services container" id="servicos">
         <h2 class="section-title">Nossos Serviços</h2>
-        <div class="services-grid" id="services-grid"></div>
+        <div class="services-grid">
+            <div class="service-card" onclick="abrirModal('Cílios Clássicos BR', '250')">
+                <div class="service-img-wrapper"><img src="Cílios Clássicos BR.jpg"></div>
+                <div class="service-body"><h3>Cílios Clássicos BR</h3><p class="price-tag">R$ 250</p></div>
+            </div>
+            <div class="service-card" onclick="abrirModal('Volume Russo Luxo', '350')">
+                <div class="service-img-wrapper"><img src="Volume Russo Luxo.jpg"></div>
+                <div class="service-body"><h3>Volume Russo Luxo</h3><p class="price-tag">R$ 350</p></div>
+            </div>
+            <div class="service-card" onclick="abrirModal('Híbrido EG', '300')">
+                <div class="service-img-wrapper"><img src="Híbrido EG.jpg"></div>
+                <div class="service-body"><h3>Híbrido EG</h3><p class="price-tag">R$ 300</p></div>
+            </div>
+            <div class="service-card" onclick="abrirModal('Lash Lift + Tint', '180')">
+                <div class="service-img-wrapper"><img src="Lash Lift + Tint.jpg"></div>
+                <div class="service-body"><h3>Lash Lift + Tint</h3><p class="price-tag">R$ 180</p></div>
+            </div>
+        </div>
     </section>
+
+    <div id="modal-agendamento" class="agendamento-modal" style="display:none;">
+        <div class="modal-content">
+            <h2 id="modal-titulo">Agendar</h2>
+            <p id="modal-servico-badge">Serviço</p>
+            <div class="form-modal-area">
+                <div class="input-group">
+                    <label>Seu Nome</label>
+                    <input type="text" id="modal-nome" placeholder="Como te chamamos?">
+                </div>
+                <div class="input-group">
+                    <label>Data</label>
+                    <input type="date" id="modal-data">
+                </div>
+                <label style="display:block; font-weight:700; color:var(--primary-dark); margin-bottom:10px; font-size:0.8rem; text-transform:uppercase;">Escolha o Horário</label>
+                <div class="horarios" id="modal-lista-horarios"></div>
+            </div>
+            <button id="close-modal" onclick="fecharModal()">Voltar</button>
+        </div>
+    </div>
 
     <section class="contact-section" id="contato">
         <div class="container">
@@ -50,23 +85,11 @@
                 </div>
                 <div class="contact-form-wrapper">
                     <form id="contact-form">
-                        <div class="input-group">
-                            <label>Seu Nome</label>
-                            <input type="text" id="name" placeholder="Como podemos te chamar?" required>
-                        </div>
-                        <div class="input-group">
-                            <label>Serviço Desejado</label>
-                            <select id="service-select" required></select>
-                        </div>
+                        <div class="input-group"><label>Seu Nome</label><input type="text" id="name" placeholder="Como te chamamos?" required></div>
+                        <div class="input-group"><label>Serviço</label><input type="text" id="service-manual" placeholder="Qual procedimento?" required></div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                            <div class="input-group">
-                                <label>Data</label>
-                                <input type="date" id="date" required>
-                            </div>
-                            <div class="input-group">
-                                <label>Hora</label>
-                                <input type="time" id="time" required>
-                            </div>
+                            <div class="input-group"><label>Data</label><input type="date" id="date" required></div>
+                            <div class="input-group"><label>Hora</label><input type="time" id="time" required></div>
                         </div>
                         <button type="submit" class="btn-submit">Solicitar Disponibilidade</button>
                     </form>
@@ -77,7 +100,38 @@
 
     <a href="https://wa.me/5541999484843" class="floating-wa" target="_blank">💬</a>
 
-    <script src="particles.js"></script>
-    <script type="module" src="script.js"></script>
+    <script>
+        // Loader
+        window.addEventListener('load', () => { document.getElementById('loader').style.opacity = '0'; setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 500); });
+
+        // Lógica do Modal
+        let servicoSelecionado = "";
+        let valorSelecionado = "";
+
+        function abrirModal(servico, valor) {
+            servicoSelecionado = servico;
+            valorSelecionado = valor;
+            document.getElementById('modal-titulo').innerText = servico;
+            document.getElementById('modal-servico-badge').innerText = "R$ " + valor;
+            const lista = document.getElementById('modal-lista-horarios');
+            lista.innerHTML = "";
+            const horas = ["10:00", "13:30", "15:00", "17:30", "19:00"];
+            horas.forEach(h => {
+                lista.innerHTML += `<button class="horario-btn" onclick="finalizarAgendamento('${h}')">${h}</button>`;
+            });
+            document.getElementById('modal-agendamento').style.display = 'flex';
+        }
+
+        function fecharModal() { document.getElementById('modal-agendamento').style.display = 'none'; }
+
+        function finalizarAgendamento(hora) {
+            const nome = document.getElementById('modal-nome').value;
+            const data = document.getElementById('modal-data').value;
+            if(!nome || !data) { alert("Preencha seu nome e a data primeiro!"); return; }
+            const dataBr = data.split('-').reverse().join('/');
+            const mensagem = `Olá! Meu nome é ${nome}. Gostaria de agendar ${servicoSelecionado} para o dia ${dataBr} às ${hora}.`;
+            window.open(`https://wa.me/5541999484843?text=${encodeURIComponent(mensagem)}`, '_blank');
+        }
+    </script>
 </body>
 </html>
