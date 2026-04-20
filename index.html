@@ -101,10 +101,11 @@
     <a href="https://wa.me/5541999484843" class="floating-wa" target="_blank">💬</a>
 
     <script>
-        // Loader
-        window.addEventListener('load', () => { document.getElementById('loader').style.opacity = '0'; setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 500); });
+        window.addEventListener('load', () => { 
+            document.getElementById('loader').style.opacity = '0'; 
+            setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 500); 
+        });
 
-        // Lógica do Modal
         let servicoSelecionado = "";
         let valorSelecionado = "";
 
@@ -125,12 +126,33 @@
         function fecharModal() { document.getElementById('modal-agendamento').style.display = 'none'; }
 
         function finalizarAgendamento(hora) {
-            const nome = document.getElementById('modal-nome').value;
+            const nome = document.getElementById('modal-nome').value.toUpperCase();
             const data = document.getElementById('modal-data').value;
-            if(!nome || !data) { alert("Preencha seu nome e a data primeiro!"); return; }
+            
+            if(!nome || !data) { 
+                alert("Por favor, preencha seu nome e selecione uma data!"); 
+                return; 
+            }
+
             const dataBr = data.split('-').reverse().join('/');
-            const mensagem = `Olá! Meu nome é ${nome}. Gostaria de agendar ${servicoSelecionado} para o dia ${dataBr} às ${hora}.`;
-            window.open(`https://wa.me/5541999484843?text=${encodeURIComponent(mensagem)}`, '_blank');
+            
+            // MENSAGEM PERSONALIZADA COM DESIGN DE LUXO
+            const mensagem = `✨ *AGENDAMENTO NEO CÍLIOS LUXO* ✨
+---------------------------------------
+
+👑 *CLIENTE:* ${nome}
+
+💎 *SERVIÇO:* ${servicoSelecionado}
+
+📅 *DATA:* ${dataBr}
+⏰ *HORÁRIO:* ${hora}
+
+---------------------------------------
+💖 *Estou pronta para brilhar!*
+_Aguardando sua confirmação._ ✨`;
+
+            const linkZap = `https://wa.me/5541999484843?text=${encodeURIComponent(mensagem)}`;
+            window.open(linkZap, '_blank');
         }
     </script>
 </body>
