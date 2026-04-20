@@ -13,7 +13,7 @@
     <header class="glass-nav">
         <nav class="container">
             <a href="#" class="logo">NEO CÍLIOS</a>
-            <ul class="nav-links" id="nav-links">
+            <ul class="nav-links">
                 <li><a href="#servicos">Serviços</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
@@ -26,9 +26,9 @@
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="badge fade-in">Técnica Internacional</span>
-            <h1 class="fade-up">Confiança de Rainha</h1>
-            <p class="fade-up-delay">O olhar mais sofisticado e seguro da cidade.</p>
+            <span class="badge">Técnica Internacional</span>
+            <h1>Confiança de Rainha</h1>
+            <p>O olhar mais sofisticado e seguro da cidade.</p>
             <a href="#servicos" class="btn-main">Agendar Agora</a>
         </div>
     </section>
@@ -37,19 +37,27 @@
         <h2 class="section-title">Nossos Serviços</h2>
         <div class="services-grid">
             <div class="service-card" onclick="abrirModal('Cílios Clássicos BR', '250')">
-                <div class="service-img-wrapper"><img src="Cílios Clássicos BR.jpg"></div>
+                <div class="service-img-wrapper"><img src="Cílios Clássicos BR.jpg" alt="Cílios Clássicos"></div>
                 <div class="service-body"><h3>Cílios Clássicos BR</h3><p class="price-tag">R$ 250</p></div>
             </div>
             <div class="service-card" onclick="abrirModal('Volume Russo Luxo', '350')">
-                <div class="service-img-wrapper"><img src="Volume Russo Luxo.jpg"></div>
+                <div class="service-img-wrapper"><img src="Volume Russo Luxo.jpg" alt="Volume Russo"></div>
                 <div class="service-body"><h3>Volume Russo Luxo</h3><p class="price-tag">R$ 350</p></div>
             </div>
             <div class="service-card" onclick="abrirModal('Híbrido EG', '300')">
-                <div class="service-img-wrapper"><img src="Híbrido EG.jpg"></div>
+                <div class="service-img-wrapper"><img src="Híbrido EG.jpg" alt="Híbrido"></div>
                 <div class="service-body"><h3>Híbrido EG</h3><p class="price-tag">R$ 300</p></div>
             </div>
+            <div class="service-card" onclick="abrirModal('Marrom Natural BR', '260')">
+                <div class="service-img-wrapper"><img src="Marrom Natural BR.jpg" alt="Marrom Natural"></div>
+                <div class="service-body"><h3>Marrom Natural BR</h3><p class="price-tag">R$ 260</p></div>
+            </div>
+            <div class="service-card" onclick="abrirModal('Mega Volume Russo', '450')">
+                <div class="service-img-wrapper"><img src="Mega Volume Russo.jpg" alt="Mega Volume"></div>
+                <div class="service-body"><h3>Mega Volume Russo</h3><p class="price-tag">R$ 450</p></div>
+            </div>
             <div class="service-card" onclick="abrirModal('Lash Lift + Tint', '180')">
-                <div class="service-img-wrapper"><img src="Lash Lift + Tint.jpg"></div>
+                <div class="service-img-wrapper"><img src="Lash.jpg" alt="Lash Lift"></div>
                 <div class="service-body"><h3>Lash Lift + Tint</h3><p class="price-tag">R$ 180</p></div>
             </div>
         </div>
@@ -57,21 +65,23 @@
 
     <div id="modal-agendamento" class="agendamento-modal" style="display:none;">
         <div class="modal-content">
-            <h2 id="modal-titulo">Agendar</h2>
-            <p id="modal-servico-badge">Serviço</p>
+            <h2 id="modal-titulo" style="font-family:'Playfair Display', serif;">Agendar</h2>
+            <p id="modal-servico-badge">Serviço Selecionado</p>
+
             <div class="form-modal-area">
                 <div class="input-group">
                     <label>Seu Nome</label>
                     <input type="text" id="modal-nome" placeholder="Como te chamamos?">
                 </div>
                 <div class="input-group">
-                    <label>Data</label>
+                    <label>Data da Sessão</label>
                     <input type="date" id="modal-data">
                 </div>
-                <label style="display:block; font-weight:700; color:var(--primary-dark); margin-bottom:10px; font-size:0.8rem; text-transform:uppercase;">Escolha o Horário</label>
-                <div class="horarios" id="modal-lista-horarios"></div>
+                <label style="display:block; font-weight:700; color:var(--primary-dark); margin: 15px 0 10px; font-size:0.8rem; text-transform:uppercase; text-align: left;">Escolha o Horário:</label>
+                <div class="horarios" id="modal-lista-horarios">
+                    </div>
             </div>
-            <button id="close-modal" onclick="fecharModal()">Voltar</button>
+            <button id="close-modal" onclick="fecharModal()">Voltar para a lista</button>
         </div>
     </div>
 
@@ -81,12 +91,22 @@
                 <div class="contact-info">
                     <h2>Agende sua Visita</h2>
                     <p>Atendimento exclusivo com materiais premium.</p>
-                    <a href="https://wa.me/5541999484843" class="btn-wa">📱 WhatsApp</a>
+                    <a href="https://wa.me/5541999484843" class="btn-wa">📱 WhatsApp Direto</a>
                 </div>
                 <div class="contact-form-wrapper">
                     <form id="contact-form">
                         <div class="input-group"><label>Seu Nome</label><input type="text" id="name" placeholder="Como te chamamos?" required></div>
-                        <div class="input-group"><label>Serviço</label><input type="text" id="service-manual" placeholder="Qual procedimento?" required></div>
+                        <div class="input-group">
+                            <label>Serviço</label>
+                            <select id="service-select" required>
+                                <option value="Cílios Clássicos BR">Cílios Clássicos BR - R$ 250</option>
+                                <option value="Volume Russo Luxo">Volume Russo Luxo - R$ 350</option>
+                                <option value="Híbrido EG">Híbrido EG - R$ 300</option>
+                                <option value="Marrom Natural BR">Marrom Natural BR - R$ 260</option>
+                                <option value="Mega Volume Russo">Mega Volume Russo - R$ 450</option>
+                                <option value="Lash Lift + Tint">Lash Lift + Tint - R$ 180</option>
+                            </select>
+                        </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                             <div class="input-group"><label>Data</label><input type="date" id="date" required></div>
                             <div class="input-group"><label>Hora</label><input type="time" id="time" required></div>
@@ -101,59 +121,81 @@
     <a href="https://wa.me/5541999484843" class="floating-wa" target="_blank">💬</a>
 
     <script>
-        window.addEventListener('load', () => { 
-            document.getElementById('loader').style.opacity = '0'; 
-            setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 500); 
+        // Loader logic
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 500);
         });
 
-        let servicoSelecionado = "";
-        let valorSelecionado = "";
+        let servicoAtivo = "";
+        let valorAtivo = "";
 
-        function abrirModal(servico, valor) {
-            servicoSelecionado = servico;
-            valorSelecionado = valor;
-            document.getElementById('modal-titulo').innerText = servico;
+        function abrirModal(nome, valor) {
+            servicoAtivo = nome;
+            valorAtivo = valor;
+            document.getElementById('modal-titulo').innerText = nome;
             document.getElementById('modal-servico-badge').innerText = "R$ " + valor;
+            
             const lista = document.getElementById('modal-lista-horarios');
             lista.innerHTML = "";
-            const horas = ["10:00", "13:30", "15:00", "17:30", "19:00"];
+            const horas = ['10:00', '13:30', '15:00', '17:30', '19:00'];
+            
             horas.forEach(h => {
-                lista.innerHTML += `<button class="horario-btn" onclick="finalizarAgendamento('${h}')">${h}</button>`;
+                const btn = document.createElement('button');
+                btn.className = 'horario-btn';
+                btn.innerText = h;
+                btn.onclick = () => finalizarAgendamento(h);
+                lista.appendChild(btn);
             });
+
             document.getElementById('modal-agendamento').style.display = 'flex';
         }
 
-        function fecharModal() { document.getElementById('modal-agendamento').style.display = 'none'; }
+        function fecharModal() {
+            document.getElementById('modal-agendamento').style.display = 'none';
+        }
 
         function finalizarAgendamento(hora) {
-            const nome = document.getElementById('modal-nome').value.toUpperCase();
-            const data = document.getElementById('modal-data').value;
-            
-            if(!nome || !data) { 
-                alert("Por favor, preencha seu nome e selecione uma data!"); 
-                return; 
+            const cliente = document.getElementById('modal-nome').value.toUpperCase();
+            const dataRaw = document.getElementById('modal-data').value;
+
+            if (!cliente || !dataRaw) {
+                alert("Rainha, preencha seu nome e a data desejada!");
+                return;
             }
 
-            const dataBr = data.split('-').reverse().join('/');
-            
-            // MENSAGEM PERSONALIZADA COM DESIGN DE LUXO
+            const dataFormatada = dataRaw.split('-').reverse().join('/');
+
             const mensagem = `✨ *AGENDAMENTO NEO CÍLIOS LUXO* ✨
 ---------------------------------------
 
-👑 *CLIENTE:* ${nome}
+👑 *CLIENTE:* ${cliente}
 
-💎 *SERVIÇO:* ${servicoSelecionado}
+💎 *SERVIÇO:* ${servicoAtivo}
+💰 *VALOR:* R$ ${valorAtivo}
 
-📅 *DATA:* ${dataBr}
+📅 *DATA:* ${dataFormatada}
 ⏰ *HORÁRIO:* ${hora}
 
 ---------------------------------------
 💖 *Estou pronta para brilhar!*
 _Aguardando sua confirmação._ ✨`;
 
-            const linkZap = `https://wa.me/5541999484843?text=${encodeURIComponent(mensagem)}`;
-            window.open(linkZap, '_blank');
+            window.open(`https://wa.me/5541999484843?text=${encodeURIComponent(mensagem)}`, '_blank');
         }
+
+        // Formulário de baixo
+        document.getElementById('contact-form').onsubmit = (e) => {
+            e.preventDefault();
+            const n = document.getElementById('name').value.toUpperCase();
+            const s = document.getElementById('service-select').value;
+            const d = document.getElementById('date').value.split('-').reverse().join('/');
+            const h = document.getElementById('time').value;
+            
+            const msg = `✨ *AGENDAMENTO NEO CÍLIOS LUXO* ✨\n---------------------------------------\n\n👑 *CLIENTE:* ${n}\n💎 *SERVIÇO:* ${s}\n📅 *DATA:* ${d}\n⏰ *HORÁRIO:* ${h}\n\n---------------------------------------\n💖 *Estou pronta para brilhar!*`;
+            window.open(`https://wa.me/5541999484843?text=${encodeURIComponent(msg)}`, '_blank');
+        };
     </script>
 </body>
 </html>
